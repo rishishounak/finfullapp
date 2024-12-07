@@ -67,7 +67,7 @@ agenda.define("send-email", async (job) => {
 });
 
 // Endpoint to handle flowchart save and email scheduling
-export default async function handler (req, res) {
+module.exports = async function handler (req, res) {
   console.log('this request body is ',req.body);
   const { nodes } = req.body;
 
