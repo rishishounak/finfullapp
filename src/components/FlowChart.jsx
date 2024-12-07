@@ -20,6 +20,7 @@ const initialNodes = [
 ];
 
 const initialEdges = [];
+const PORT = process.env.PORT || 5000;
 const serverUrl = `http://localhost:${process.env.PORT || 5000}`;
 const FlowChart = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
