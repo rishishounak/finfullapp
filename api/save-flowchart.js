@@ -41,6 +41,10 @@ app.use(cors({
 // MongoDB connection string for Agenda
 const agenda = new Agenda({ db: { address: "mongodb+srv://rishishounak:yoman21@cluster0.quxch.mongodb.net/dataemail1?retryWrites=true&w=majority&appName=Cluster0" } });
 
+agenda.on("ready", () => {
+  agenda.start();
+  console.log("Agenda started!");
+});
 // Configure Nodemailer transport
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -66,10 +70,7 @@ agenda.define("send-email", async (job) => {
   }
 });
 
-agenda.on("ready", () => {
-  agenda.start();
-  console.log("Agenda started!");
-});
+
 
 // Endpoint to handle flowchart save and email scheduling
 module.exports = async function handler (req, res) {
@@ -79,7 +80,31 @@ module.exports = async function handler (req, res) {
   // if (!nodes || nodes.length === 0) {
   //   return res.status(400).json({ message: "Invalid flowchart data" });
   // }
+  const agenda = new Agenda({ db: { address: "mongodb+srv://rishishounak:yoman21@cluster0.quxch.mongodb.net/dataemail1?retryWrites=true&w=majority&appName=Cluster0" } });
 
+  const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "rishishounak@gmail.com", // Replace with your email
+    pass: "pios afii nubz nhqm", // Replace with your email app password
+  },
+});
+
+// Define the email sending job
+agenda.define("send-email", async (job) => {
+  const { to, subject, body } = job.attrs.data;
+  try {
+    await transporter.sendMail({
+      from: "rishishounak@gmail.com",
+      to,
+      subject,
+      text: body,
+    });
+    console.log(`Email sent to ${to}`);
+  } catch (err) {
+    console.error(`Failed to send email to ${to}:`, err);
+  }
+});
   try {
     // for (const node of nodes) {
     //   if (node.data.label === "Cold Email" && node.data.details) {
