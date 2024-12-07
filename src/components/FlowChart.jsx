@@ -20,7 +20,7 @@ const initialNodes = [
 ];
 
 const initialEdges = [];
-
+const serverUrl = `http://localhost:${process.env.PORT || 5000}`;
 const FlowChart = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
@@ -169,7 +169,7 @@ const FlowChart = () => {
     const flowchartData = { nodes, edges };
 
     try {
-      const response = await fetch("http://localhost:5000/api/save-flowchart", {
+      const response = await fetch("${serverUrl}/api/save-flowchart", {
         method: "POST",
         // mode: 'no-cors',
         headers: { "Content-Type": "application/json" },
