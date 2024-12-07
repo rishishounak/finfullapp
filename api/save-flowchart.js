@@ -39,7 +39,7 @@ app.use(cors({
 
 
 // MongoDB connection string for Agenda
-const agenda = new Agenda({ db: { address: "mongodb+srv://rishishounak:yoman21@cluster0.quxch.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" } });
+const agenda = new Agenda({ db: { address: "mongodb+srv://rishishounak:yoman21@cluster0.quxch.mongodb.net/dataemail1?retryWrites=true&w=majority&appName=Cluster0" } });
 
 // Configure Nodemailer transport
 const transporter = nodemailer.createTransport({
