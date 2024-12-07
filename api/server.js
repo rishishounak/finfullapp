@@ -22,11 +22,21 @@ const serverUrl = `http://localhost:${process.env.PORT || 5000}`;
 
 // app.use(bodyParser.json()); 
 app.use(cors({
-  origin: 'https://finfullapp.vercel.app', // Allow requests from frontend
+  origin: (origin, callback) => {
+    const allowedOrigins = ['https://finfullapp.vercel.app', 'https://*.vercel.app'];
+    if (allowedOrigins.includes(origin) || !origin) {  // `!origin` allows no origin during server-side requests
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  // origin: 'https://finfullapp.vercel.app', // Allow requests from frontend
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   headers:{"Content-Type":"application/json"}
 }));
+
+
 
 // MongoDB connection string for Agenda
 const agenda = new Agenda({ db: { address: "mongodb://localhost:27017/agenda" } });
