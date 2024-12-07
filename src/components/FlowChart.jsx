@@ -169,7 +169,7 @@ const FlowChart = () => {
     const flowchartData = { nodes, edges };
 
     try {
-      const response = await fetch("/api/save-flowchart", {
+      const response = await fetch("http://localhost:5000/api/save-flowchart", {
         method: "POST",
         // mode: 'no-cors',
         headers: { "Content-Type": "application/json" },
