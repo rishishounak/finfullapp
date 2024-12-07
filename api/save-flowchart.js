@@ -117,7 +117,7 @@ module.exports = async function handler (req, res) {
     console.error("Error scheduling emails:", error);
     res.status(500).json({ message: "Error scheduling emails", error });
   }
-});
+};
 
 // Start the Agenda job processing
 agenda.on("ready", () => {
