@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-
+const mongoose = require('mongoose');
 const nodemailer = require("nodemailer");
 const Agenda = require("agenda");
 const cors = require('cors');
@@ -37,6 +37,14 @@ app.use(cors({
 }));
 
 
+async function connectDB() {
+  const dbUri = "mongodb+srv://rishishounak:yoman21@cluster0.quxch.mongodb.net/dataemail1?retryWrites=true&w=majority&appName=Cluster0";  // MongoDB URI from environment variables
+  await mongoose.connect(dbUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  console.log('MongoDB connected');
+}
 
 // MongoDB connection string for Agenda
 const agenda = new Agenda({ db: { address: "mongodb+srv://rishishounak:yoman21@cluster0.quxch.mongodb.net/dataemail1?retryWrites=true&w=majority&appName=Cluster0" } });
@@ -80,7 +88,11 @@ module.exports = async function handler (req, res) {
   // if (!nodes || nodes.length === 0) {
   //   return res.status(400).json({ message: "Invalid flowchart data" });
   // }
-  const agenda = new Agenda({ db: { address: "mongodb+srv://rishishounak:yoman21@cluster0.quxch.mongodb.net/dataemail1?retryWrites=true&w=majority&appName=Cluster0" } });
+  await connectDB();
+
+      // Initialize Agenda within the request handler
+  const agenda = new Agenda({ mongo: mongoose.connection });
+  // const agenda = new Agenda({ db: { address: "mongodb+srv://rishishounak:yoman21@cluster0.quxch.mongodb.net/dataemail1?retryWrites=true&w=majority&appName=Cluster0" } });
 
   const transporter = nodemailer.createTransport({
   service: "gmail",
