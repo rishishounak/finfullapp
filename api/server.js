@@ -17,7 +17,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // app.use(bodyParser.json()); 
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from frontend
+  origin: 'https://finfullapp.vercel.app', // Allow requests from frontend
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   headers:{"Content-Type":"application/json"}
