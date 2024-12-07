@@ -66,6 +66,11 @@ agenda.define("send-email", async (job) => {
   }
 });
 
+agenda.on("ready", () => {
+  agenda.start();
+  console.log("Agenda started!");
+});
+
 // Endpoint to handle flowchart save and email scheduling
 module.exports = async function handler (req, res) {
   console.log('this request body is ',req.body);
@@ -120,10 +125,10 @@ module.exports = async function handler (req, res) {
 };
 
 // Start the Agenda job processing
-agenda.on("ready", () => {
-  agenda.start();
-  console.log("Agenda started!");
-});
+// agenda.on("ready", () => {
+//   agenda.start();
+//   console.log("Agenda started!");
+// });
 
 // Start the server
 
