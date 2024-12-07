@@ -11,8 +11,8 @@ const cors = require('cors');
 // }));
 // app.use(bodyParser.json()); 
 const app = express();
-const PORT = process.env.PORT || 5000;
-const serverUrl = `http://localhost:${process.env.PORT || 5000}`;
+const PORT = process.env.PORT || 4000;
+const serverUrl = `http://localhost:${process.env.PORT || 4000}`;
 
 
 
