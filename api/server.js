@@ -67,7 +67,7 @@ agenda.define("send-email", async (job) => {
 });
 
 // Endpoint to handle flowchart save and email scheduling
-app.post(`${serverUrl}/api/save-flowchart`, async (req, res) => {
+app.post(`/api/save-flowchart`, async (req, res) => {
   console.log('this request body is ',req.body);
   const { nodes } = req.body;
 
