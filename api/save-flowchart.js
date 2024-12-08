@@ -57,7 +57,7 @@ agenda.on("ready", () => {
 const transporter = nodemailer.createTransport({
   service: "smtp.gmail.com",
   port:587,
-  secure:false
+  secure:false,
   auth: {
     user: "rishishounak@gmail.com", // Replace with your email
     pass: "pios afii nubz nhqm", // Replace with your email app password
