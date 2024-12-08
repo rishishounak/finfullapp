@@ -130,6 +130,8 @@ agenda.define("send-email", async (job) => {
         const{emails, subject, body, date, time,delayInDays}=posty;
         const emailList = emails.split(",").map((email) => email.trim());
 
+        console.log("hello people",emailList);
+
         // Schedule the initial email
         if (date && time) {
           const sendDate = new Date(`${date}T${time}`);
