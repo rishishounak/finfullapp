@@ -84,6 +84,8 @@ agenda.define("send-email", async (job) => {
 
 // Endpoint to handle flowchart save and email scheduling
 module.exports = async function handler (req, res) {
+  console.log("SMTP_HOST is:", process.env.SMTP_HOST); 
+  console.log("SMTP_PORT is:", process.env.SMTP_PORT); 
   console.log('this request body is ',req.body);
   const { nodes } = req.body;
 
