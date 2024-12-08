@@ -56,8 +56,6 @@ agenda.on("ready", () => {
 // Configure Nodemailer transport
 const transporter = nodemailer.createTransport({
   service: process.env.SMTP_HOST,
-  port:587,
-  secure:false,
   auth: {
     user: "rishishounak@gmail.com", // Replace with your email
     pass: "pios afii nubz nhqm", // Replace with your email app password
