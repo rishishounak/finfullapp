@@ -57,6 +57,7 @@ agenda.on("ready", () => {
 const transporter = nodemailer.createTransport({
   service: process.env.SMTP_HOST,
   port:process.env.SMTP_PORT,
+  secure: false, 
   auth: {
     user: "rishishounak@gmail.com", // Replace with your email
     pass: "pios afii nubz nhqm", // Replace with your email app password
@@ -98,6 +99,7 @@ module.exports = async function handler (req, res) {
   const transporter = nodemailer.createTransport({
   service: process.env.SMTP_HOST,
     port:process.env.SMTP_PORT,
+    secure: false, 
   auth: {
     user: "rishishounak@gmail.com", // Replace with your email
     pass: "pios afii nubz nhqm", // Replace with your email app password
