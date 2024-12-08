@@ -104,12 +104,12 @@ module.exports = async function handler (req, res) {
 
 // Define the email sending job
 agenda.define("send-email", async (job) => {
-  const { tomail, subject, body } = job.attrs.data;
+  const { to, subject, body } = job.attrs.data;
   try {
     await transporter.sendMail({
       from: "rishishounak@gmail.com",
-      to:tomail,
-      subject:subject,
+      to,
+      subject,
       text: body,
     });
     console.log(`Email sent to ${to}`);
