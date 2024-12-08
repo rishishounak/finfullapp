@@ -97,7 +97,7 @@ module.exports = async function handler (req, res) {
   // const agenda = new Agenda({ db: { address: "mongodb+srv://rishishounak:yoman21@cluster0.quxch.mongodb.net/dataemail1?retryWrites=true&w=majority&appName=Cluster0" } });
 
   const transporter = nodemailer.createTransport({
-  service: "gmail",
+  service: process.env.SMTP_HOST,
   auth: {
     user: "rishishounak@gmail.com", // Replace with your email
     pass: "pios afii nubz nhqm", // Replace with your email app password
