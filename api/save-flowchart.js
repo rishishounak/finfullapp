@@ -68,9 +68,9 @@ agenda.define("send-email", async (job) => {
   try {
     await transporter.sendMail({
       from: "rishishounak@gmail.com",
-      to:to,
-      subject:subject,
-      text: body,
+      to,
+      subject,
+      body,
     });
     console.log(`Email sent to ${to}`);
   } catch (err) {
