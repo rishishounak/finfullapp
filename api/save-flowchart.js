@@ -55,7 +55,7 @@ agenda.on("ready", () => {
 });
 // Configure Nodemailer transport
 const transporter = nodemailer.createTransport({
-  service: "smtp.gmail.com",
+  service: process.env.SMTP_HOST,
   port:587,
   secure:false,
   auth: {
